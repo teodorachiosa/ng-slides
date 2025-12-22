@@ -1,11 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { Header } from './components/header/header';
-import { ViewEncapsulation } from '@angular/core';
-import { WebA11yForEveryone } from '@pages/web-a11y-for-everyone/web-a11y-for-everyone';
+import { SlideDeck } from '@slide-decks/slide-deck/slide-deck';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, WebA11yForEveryone],
+  imports: [Header, SlideDeck],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

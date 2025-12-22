@@ -20,7 +20,8 @@
       "@directives/*": ["app/directives/*"],
       "@services/*": ["app/services/*"],
       "@models/*": ["app/models/*"],
-      "@pages/*": ["app/pages/*"]
+      "@slide-decks/*": ["app/slide-decks/*"],
+      "@slide-groups/*": ["app/slide-groups/*"]
     }
   },
   "angularCompilerOptions": {

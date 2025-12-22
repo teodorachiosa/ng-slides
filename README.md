@@ -21,3 +21,12 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [ ] Language switcher and i18n setup
 - [ ] Jump to page option
 - [ ] Save settings to cookies
+- [ ] Fix slide group extraction glitches
+
+## How to run
+
+- fork/clone/download this project to use as a template
+- run `npm install` in the "ng-slides" folder
+- run `npm run start` for local development
+- edit the example slide deck
+- (optional) create a GitHub Pages workflow to host the slides online
