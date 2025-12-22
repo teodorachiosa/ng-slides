@@ -22,6 +22,7 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [ ] Jump to page option
 - [ ] Save settings to cookies
 - [ ] Fix slide group extraction glitches
+- [ ] Add page number to slide
 
 ## How to run
 
