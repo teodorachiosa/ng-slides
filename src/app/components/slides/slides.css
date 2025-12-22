@@ -1,0 +1,14 @@
+:host {
+  container: slides / inline-size;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: min-content;
+  margin: 0 auto;
+
+  ::ng-deep app-slide {
+    markdown {
+      width: 100%;
+    }
+  }
+}

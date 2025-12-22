@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing);
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  box-shadow: 0 0 var(--shadow-spread) 0 var(--shadow-color);
+  background: var(--surface-background-transparent);
+  backdrop-filter: blur(10px);
+  padding: calc(var(--spacing) / 3);
+
+  &.fullscreen {
+    display: none;
+  }
+
+  .left-container,
+  .right-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing);
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) / 5);
+
+    label,
+    legend {
+      font-weight: 600;
+    }
+
+    input {
+      max-width: 7ch;
+    }
+
+    .radio-group {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing) / 20);
+    }
+  }
+}

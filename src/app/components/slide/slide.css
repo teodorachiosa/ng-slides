@@ -1,0 +1,22 @@
+:host{
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: fit-content;
+  margin: 0 auto;
+  background: var(--surface-background);
+
+  &.slide-view {
+    aspect-ratio: 16 / 9;
+    font-size: 3cqw;
+    overflow: hidden;
+  }
+
+  ::ng-deep markdown {
+    width: 100%;
+  }
+
+  &:focus {
+    outline-offset: 4px;
+  }
+}
