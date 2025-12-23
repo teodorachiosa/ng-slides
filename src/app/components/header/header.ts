@@ -1,8 +1,17 @@
-import { AfterViewInit, Component, HostBinding, inject, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  DOCUMENT,
+  HostBinding,
+  HostListener,
+  Inject,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { Options, View } from '@models/options.model';
-import { OptionsService } from '@services/options.service';
+import { State, View } from '@models/state.model';
+import { StateService } from '@services/state.service';
 
 @Component({
   selector: 'app-header',
@@ -11,19 +20,33 @@ import { OptionsService } from '@services/options.service';
   styleUrl: './header.css',
 })
 export class Header implements OnInit, AfterViewInit {
-  options: Options = {};
-  optionsService = inject(OptionsService);
+  state: State = {};
+  stateService = inject(StateService);
 
-  view: View = 'slide';
-  maxWidth: number = 100;
-  isDarkMode: boolean = false;
+  view?: View;
+  maxWidth?: number;
+  isDarkMode?: boolean;
 
   headerElement?: HTMLElement | null;
 
   @HostBinding('attr.role')
   role = 'banner';
 
+  @HostListener('document:keydown', ['$event'])
+  handlePresentKeys(event: KeyboardEvent) {
+    if (this.stateService.getState().view === 'slide' && event.ctrlKey && event.key === 'F5') {
+      event.preventDefault();
+      this.present();
+    }
+  }
+
+  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
+
   ngOnInit(): void {
+    this.view = this.stateService.getState().view;
+    this.maxWidth = this.stateService.getState().maxWidth;
+    this.isDarkMode = this.stateService.getState().isDarkMode;
+
     if (typeof window !== 'undefined') {
       this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
@@ -40,18 +63,18 @@ export class Header implements OnInit, AfterViewInit {
   }
 
   updateView(event: Event): void {
-    this.options['view'] = this.view;
-    this.optionsService.setOptions(this.options);
+    this.state['view'] = this.view;
+    this.stateService.setState(this.state);
   }
 
   updateMaxWidth(event: Event): void {
-    this.options['maxWidth'] = this.maxWidth;
-    this.optionsService.setOptions(this.options);
+    this.state['maxWidth'] = this.maxWidth;
+    this.stateService.setState(this.state);
   }
 
   updateDarkMode(event: Event): void {
-    this.options['isDarkMode'] = this.isDarkMode;
-    this.optionsService.setOptions(this.options);
+    this.state['isDarkMode'] = this.isDarkMode;
+    this.stateService.setState(this.state);
     this.setColorScheme(Boolean(event));
   }
 
@@ -59,11 +82,14 @@ export class Header implements OnInit, AfterViewInit {
     document.documentElement.style.setProperty('color-scheme', isDarkMode ? 'dark' : 'light');
   }
 
-  present(): void {
+  async present(): Promise<void> {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
+      await document.documentElement.requestFullscreen();
       this.headerElement?.classList.add('fullscreen');
       this.updateFullscreenStateAndUI(true);
+      setTimeout(() => {
+        this.document.querySelector<HTMLElement>('app-slide')?.focus();
+      });
     }
   }
 
@@ -72,15 +98,22 @@ export class Header implements OnInit, AfterViewInit {
 
     this.headerElement?.classList.remove('fullscreen');
     this.updateFullscreenStateAndUI(false);
+
+    this.state['currentSlide'] = 0;
+    this.stateService.setState(this.state);
   }
 
   updateFullscreenStateAndUI(isFullscreen: boolean): void {
-    this.options['isFullscreen'] = isFullscreen;
-    this.optionsService.setOptions(this.options);
+    this.state['isFullscreen'] = isFullscreen;
+    this.stateService.setState(this.state);
 
     let bodyElement = document.querySelector('body');
     if (bodyElement) {
       bodyElement.style.overflow = isFullscreen ? 'hidden' : 'auto';
     }
+  }
+
+  get maxWidthOrZoom(): string {
+    return this.stateService.getState().view === 'web' ? 'Max width' : 'Zoom';
   }
 }

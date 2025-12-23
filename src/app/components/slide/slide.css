@@ -1,7 +1,8 @@
-:host{
+:host {
   position: relative;
   display: flex;
   width: 100%;
+  max-width: 100%;
   min-width: fit-content;
   margin: 0 auto;
   background: var(--surface-background);
@@ -9,7 +10,27 @@
   &.slide-view {
     aspect-ratio: 16 / 9;
     font-size: 3cqw;
-    overflow: hidden;
+    overflow-x: visible;
+    overflow-y: clip;
+  }
+
+  &.web-view {
+    ::ng-deep .slide-number {
+      display: none;
+    }
+  }
+
+  ::ng-deep .slide-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.45em;
+    padding: 0.4em;
+    translate: -100%;
+    z-index: -1;
   }
 
   ::ng-deep markdown {

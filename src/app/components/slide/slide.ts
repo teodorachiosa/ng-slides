@@ -1,6 +1,6 @@
 import { Component, HostBinding, inject, Input } from '@angular/core';
 
-import { OptionsService } from '@services/options.service';
+import { StateService } from '@services/state.service';
 
 @Component({
   selector: 'app-slide',
@@ -9,11 +9,11 @@ import { OptionsService } from '@services/options.service';
   styleUrl: './slide.css',
 })
 export class Slide {
-  optionsService = inject(OptionsService);
+  stateService = inject(StateService);
 
   @HostBinding('attr.tabindex') get tabindex() {
-    return this.optionsService.getOptions().view === 'web' ||
-      !this.optionsService.getOptions().isFullscreen
+    return this.stateService.getState().view === 'web' ||
+      !this.stateService.getState().isFullscreen
       ? null
       : '-1';
   }
@@ -27,16 +27,16 @@ export class Slide {
   padding: string = '0.5em 1.5em';
 
   @HostBinding('style.margin') get margin() {
-    return this.optionsService.getOptions().isFullscreen ? '0' : 'calc(var(--spacing) / 2) 0';
+    return this.stateService.getState().isFullscreen ? '0' : 'calc(var(--spacing) / 2) 0';
   }
 
   @HostBinding('style.boxShadow') get boxShadow() {
-    return this.optionsService.getOptions().isFullscreen
+    return this.stateService.getState().isFullscreen
       ? 'none'
       : '0 0 var(--shadow-spread) 0 var(--shadow-color)';
   }
 
   @HostBinding('class') get view() {
-    return this.optionsService.getOptions().view === 'web' ? 'web-view' : 'slide-view';
+    return this.stateService.getState().view === 'web' ? 'web-view' : 'slide-view';
   }
 }

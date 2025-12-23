@@ -11,4 +11,8 @@
       width: 100%;
     }
   }
+
+  & > ::ng-deep :not(app-slide) {
+    display: contents;
+  }
 }

@@ -25,7 +25,7 @@
   </fieldset>
 
   <div class="option">
-    <label for="max-width">Max width / Zoom</label>
+    <label for="max-width">{{maxWidthOrZoom}}</label>
     <input [(ngModel)]="maxWidth"
            (ngModelChange)="updateMaxWidth($event)"
            id="max-width"
@@ -40,8 +40,7 @@
     <input [(ngModel)]="isDarkMode"
            (ngModelChange)="updateDarkMode($event)"
            id="dark-mode"
-           t
-           ype="checkbox" />
+           type="checkbox" />
   </div>
 </div>
 
@@ -57,6 +56,6 @@
   <button (click)="present()"
           [disabled]="view === 'web'">
     <span aria-hidden="true">🖥️</span>
-    Present
+    Present (<kbd>Ctrl</kbd> + <kbd>F5</kbd>)
   </button>
 </div>
