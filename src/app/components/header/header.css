@@ -34,7 +34,7 @@
     }
 
     input {
-      max-width: 7ch;
+      max-width: 50px;
     }
 
     .radio-group {

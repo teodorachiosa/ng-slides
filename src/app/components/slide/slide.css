@@ -37,6 +37,10 @@
     width: 100%;
   }
 
+  ::ng-deep img {
+    max-width: 100%;
+  }
+
   &:focus {
     outline-offset: 4px;
   }
