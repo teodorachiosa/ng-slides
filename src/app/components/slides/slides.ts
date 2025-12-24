@@ -46,7 +46,7 @@ export class Slides implements AfterViewInit {
   @HostBinding('style.padding') get padding() {
     return this.stateService.getState().isFullscreen
       ? '0'
-      : 'calc(var(--spacing) / 2) var(--spacing)';
+      : 'calc(var(--spacing2) / 2) var(--spacing2)';
   }
 
   @HostListener('keydown', ['$event'])

@@ -27,7 +27,7 @@ export class Slide {
   padding: string = '0.5em 1.5em';
 
   @HostBinding('style.margin') get margin() {
-    return this.stateService.getState().isFullscreen ? '0' : 'calc(var(--spacing) / 2) 0';
+    return this.stateService.getState().isFullscreen ? '0' : 'calc(var(--spacing2) / 2) 0';
   }
 
   @HostBinding('style.boxShadow') get boxShadow() {
