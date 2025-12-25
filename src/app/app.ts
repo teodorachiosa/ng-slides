@@ -8,6 +8,4 @@ import { SlideDeck } from '@slide-decks/slide-deck/slide-deck';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = signal('ng-slides');
-}
+export class App {}

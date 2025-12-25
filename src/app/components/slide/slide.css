@@ -10,7 +10,7 @@
 
   &.slide-view {
     aspect-ratio: 16 / 9;
-    font-size: 3cqw;
+    font-size: 3cqi;
     overflow-x: visible;
     overflow-y: clip;
   }

@@ -1,44 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap');
 
 :root {
-  --base-font: 'Inclusive Sans', sans-serif;
-  --title-font: 'Sono', monospace;
-
   color-scheme: light dark;
   accent-color: light-dark(black, white);
-  --spacing: 30px;
-  --spacing2: 50px;
-  --background: light-dark(rgb(230, 230, 230), rgb(15, 15, 15));
-  --surface-background: light-dark(rgb(255, 255, 255), rgb(30, 30, 30));
 
-  --surface-transparency: 0.85;
+  --base-font: 'Inclusive Sans', sans-serif;
+
+  --spacing: 30px;
+  --background: light-dark(rgb(230 230 230), rgb(15 15 15));
+  --surface-background: light-dark(rgb(255 255 255), rgb(30 30 30));
+
+  --surface-transparency: 0.9;
   --surface-background-transparent: light-dark(
     rgba(255, 255, 255, var(--surface-transparency)),
     rgba(40, 40, 40, var(--surface-transparency))
   );
 
-  --shadow-color: light-dark(rgba(0, 0, 0, 0.2), rgb(0, 0, 0));
+  --shadow-color: light-dark(rgba(0 0 0 / 0.2), rgb(0 0 0));
   --shadow-spread: 10px;
 
   /**
   COLORS
   **/
-  --red: oklch(60% 0.32 25 / 0.2);
-  --orange: oklch(70% 0.29 70 / 0.2);
-  --yellow: oklch(75% 0.28 95 / 0.2);
-  --lime: oklch(72% 0.27 130 / 0.2);
-  --green: oklch(65% 0.26 145 / 0.2);
-  --emerald: oklch(62% 0.25 160 / 0.2);
-  --teal: oklch(60% 0.25 175 / 0.2);
-  --cyan: oklch(65% 0.24 195 / 0.2);
-  --azure: oklch(60% 0.25 215 / 0.2);
-  --blue: oklch(55% 0.27 250 / 0.2);
-  --indigo: oklch(50% 0.28 270 / 0.2);
-  --violet: oklch(52% 0.29 290 / 0.2);
-  --purple: oklch(50% 0.3 305 / 0.2);
-  --magenta: oklch(55% 0.31 320 / 0.2);
-  --pink: oklch(65% 0.31 345 / 0.2);
-  --rose: oklch(68% 0.3 5 /0.2);
+  --color-alpha: 0.3;
+  --red: oklch(60% 0.32 25 / var(--color-alpha));
+  --orange: oklch(70% 0.29 70 / var(--color-alpha));
+  --yellow: oklch(75% 0.28 95 / var(--color-alpha));
+  --lime: oklch(72% 0.27 130 / var(--color-alpha));
+  --green: oklch(65% 0.26 145 / var(--color-alpha));
+  --emerald: oklch(62% 0.25 160 / var(--color-alpha));
+  --teal: oklch(60% 0.25 175 / var(--color-alpha));
+  --cyan: oklch(65% 0.24 195 / var(--color-alpha));
+  --azure: oklch(60% 0.25 215 / var(--color-alpha));
+  --blue: oklch(55% 0.27 250 / var(--color-alpha));
+  --indigo: oklch(50% 0.28 270 / var(--color-alpha));
+  --violet: oklch(52% 0.29 290 / var(--color-alpha));
+  --purple: oklch(50% 0.3 305 / var(--color-alpha));
+  --magenta: oklch(55% 0.31 320 / var(--color-alpha));
+  --pink: oklch(65% 0.31 345 / var(--color-alpha));
+  --rose: oklch(68% 0.3 5 / var(--color-alpha));
 }
 
 body {

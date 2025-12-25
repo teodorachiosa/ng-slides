@@ -6,13 +6,31 @@
   min-width: min-content;
   margin: 0 auto;
 
+  .slides-container {
+    --slides-spacing: 40px;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: min-content;
+    margin: 0 auto;
+    gap: var(--slides-spacing);
+    padding: var(--slides-spacing);
+
+    & > ::ng-deep :not(app-slide) {
+      display: contents;
+    }
+  }
+
+  &.slide-view {
+    .slides-container {
+      --slides-spacing: 3cqi;
+    }
+  }
+
   ::ng-deep app-slide {
     markdown {
       width: 100%;
     }
-  }
-
-  & > ::ng-deep :not(app-slide) {
-    display: contents;
   }
 }
