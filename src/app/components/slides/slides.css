@@ -21,14 +21,16 @@
     }
   }
 
-  &:has(.slide-view) {
-    --slides-spacing: 3cqi;
-  }
-
   ::ng-deep app-slide {
     markdown {
       width: 100%;
     }
+  }
+}
+
+:host-context(.slide-view) {
+  :host {
+    --slides-spacing: 3cqi;
   }
 }
 

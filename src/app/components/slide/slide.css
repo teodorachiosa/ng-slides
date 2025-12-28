@@ -8,19 +8,6 @@
   margin: 0 auto;
   background: var(--surface-background);
 
-  &.slide-view {
-    aspect-ratio: 16 / 9;
-    font-size: 3cqi;
-    overflow-x: visible;
-    overflow-y: clip;
-  }
-
-  &.web-view {
-    ::ng-deep .slide-number {
-      display: none;
-    }
-  }
-
   ::ng-deep .slide-number {
     position: absolute;
     top: 0;
@@ -53,5 +40,23 @@
 
   &:focus {
     outline-offset: 4px;
+  }
+}
+
+:host-context(.web-view) {
+  :host {
+    ::ng-deep .slide-number {
+      display: none;
+    }
+  }
+}
+
+:host-context(.slide-view) {
+  :host {
+    aspect-ratio: 16 / 9;
+    font-size: 3cqi;
+    overflow-x: visible;
+    overflow-y: clip;
+    scroll-snap-align: center;
   }
 }

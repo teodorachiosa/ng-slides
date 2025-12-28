@@ -52,6 +52,10 @@ export class Header implements OnInit, AfterViewInit {
     if (typeof document !== 'undefined') {
       this.rootElement = document.documentElement;
 
+      if (this.view) {
+        this.rootElement?.classList.add(`${this.view}-view`);
+      }
+
       document.addEventListener('fullscreenchange', () => {
         this.exitFullscreen();
       });
@@ -61,6 +65,9 @@ export class Header implements OnInit, AfterViewInit {
   updateView(): void {
     this.state['view'] = this.view;
     this.stateService.setState(this.state);
+
+    this.rootElement?.classList.remove(this.view === 'slide' ? 'web-view' : 'slide-view');
+    this.rootElement?.classList.add(this.view === 'slide' ? 'slide-view' : 'web-view');
   }
 
   updateMaxWidth(): void {

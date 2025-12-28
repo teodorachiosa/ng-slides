@@ -1,8 +1,8 @@
 <div class="left-container">
   <fieldset class="option">
-    <legend>View</legend>
-    <div>
-      <div>
+    <legend class="sr-only">View</legend>
+    <div class="radio-group">
+      <div class="radio">
         <input type="radio"
                id="web-view"
                value="web"
@@ -12,7 +12,7 @@
         <label for="web-view">Web view</label>
       </div>
 
-      <div>
+      <div class="radio">
         <input type="radio"
                id="slide-view"
                value="slide"
@@ -32,7 +32,7 @@
            type="range"
            min="10"
            max="100" />
-    <output for="max-width">{{maxWidth}}%</output>
+    <span>{{maxWidth}}%</span>
   </div>
 
   <div class="option">

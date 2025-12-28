@@ -24,9 +24,10 @@
     align-items: center;
     gap: calc(var(--spacing) / 5);
 
-    label,
-    legend {
-      font-weight: 600;
+    &:not(:has(.radio-group)) {
+      label {
+        font-weight: 600;
+      }
     }
 
     input {
@@ -35,8 +36,51 @@
 
     .radio-group {
       display: flex;
+      background: var(--background);
+      border: 2px solid var(--shadow-color);
+      justify-content: center;
       align-items: center;
-      gap: calc(var(--spacing) / 20);
+
+      .radio {
+        display: flex;
+        height: var(--input-height);
+
+        &:first-child {
+          border-right: 2px solid var(--shadow-color);
+        }
+
+        input {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+
+          &:focus {
+            & + label {
+              outline: auto;
+            }
+          }
+        }
+
+        label {
+          display: inline-flex;
+          align-items: center;
+          padding: calc(var(--spacing) / 5) calc(var(--spacing) / 2);
+        }
+
+        input:checked {
+          & + label {
+            font-weight: 600;
+            background: var(--surface-background-transparent);
+
+            &::after {
+              content: '✓' / '';
+              display: flex;
+              align-items: center;
+              margin-left: calc(var(--spacing) / 5);
+            }
+          }
+        }
+      }
     }
   }
 }

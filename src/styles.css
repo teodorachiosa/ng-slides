@@ -3,8 +3,10 @@
 :root {
   color-scheme: light dark;
   accent-color: light-dark(black, white);
+  scroll-snap-type: y proximity;
 
   --base-font: 'Inclusive Sans', sans-serif;
+  --input-height: 30px;
 
   --spacing: 30px;
   --background: light-dark(rgb(230 230 230), rgb(15 15 15));
@@ -81,11 +83,6 @@ fieldset {
 
   legend {
     padding: 0;
-    display: contents;
-  }
-
-  label {
-    font-weight: normal !important;
   }
 }
 

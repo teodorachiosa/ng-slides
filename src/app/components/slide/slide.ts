@@ -31,8 +31,4 @@ export class Slide {
       ? 'none'
       : '0 0 var(--shadow-spread) 0 var(--shadow-color)';
   }
-
-  @HostBinding('class') get view() {
-    return this.stateService.getState().view === 'web' ? 'web-view' : 'slide-view';
-  }
 }
