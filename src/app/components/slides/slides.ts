@@ -43,10 +43,6 @@ export class Slides implements AfterViewInit {
       : '100%';
   }
 
-  @HostBinding('class') get view() {
-    return this.stateService.getState().view === 'web' ? 'web-view' : 'slide-view';
-  }
-
   @HostListener('keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     const allowedKeys = ['ArrowRight', 'ArrowLeft', 'Home', 'End', 'PageUp', 'PageDown'];

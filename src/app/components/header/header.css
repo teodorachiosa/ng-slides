@@ -12,10 +12,6 @@
   backdrop-filter: blur(10px);
   padding: calc(var(--spacing) / 3);
 
-  &.fullscreen {
-    display: none;
-  }
-
   .left-container,
   .right-container {
     display: flex;
@@ -42,5 +38,11 @@
       align-items: center;
       gap: calc(var(--spacing) / 20);
     }
+  }
+}
+
+:host-context(.fullscreen) {
+  :host {
+    display: none;
   }
 }

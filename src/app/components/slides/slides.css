@@ -1,4 +1,5 @@
 :host {
+  --slides-spacing: 40px;
   container: slides / inline-size;
   display: flex;
   flex-direction: column;
@@ -7,8 +8,6 @@
   margin: 0 auto;
 
   .slides-container {
-    --slides-spacing: 40px;
-
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -22,15 +21,19 @@
     }
   }
 
-  &.slide-view {
-    .slides-container {
-      --slides-spacing: 3cqi;
-    }
+  &:has(.slide-view) {
+    --slides-spacing: 3cqi;
   }
 
   ::ng-deep app-slide {
     markdown {
       width: 100%;
     }
+  }
+}
+
+:host-context(.fullscreen) {
+  :host {
+    --slides-spacing: 0;
   }
 }
