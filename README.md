@@ -1,4 +1,4 @@
-# ng-slides
+# ng-slides (WIP)
 
 A way to make multi-lingual presentations locally, using Angular.
 
