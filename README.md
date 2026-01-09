@@ -19,6 +19,7 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [x] Add reusable components support (reuse groups of slides)
 - [x] Add dark mode
 - [x] Add slide number
+- [x] Add routing (switch between slide decks)
 
 ## To do:
 
@@ -26,7 +27,6 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [ ] Language switcher and i18n setup
 - [ ] Jump to page option
 - [ ] Save settings to cookies
-- [ ] Add routing (switch between slide decks)
 
 ## How to run
 
