@@ -27,6 +27,7 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [ ] Language switcher and i18n setup
 - [ ] Jump to page option
 - [ ] Save settings to cookies
+- [ ] Implement responsive header
 
 ## How to run
 
