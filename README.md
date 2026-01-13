@@ -1,5 +1,9 @@
 # ng-slides (WIP)
 
+![A screenshot of the live version of ng-slides](https://v1.screenshot.11ty.dev/https%3A%2F%2Fteo-ng-slides.vercel.app/opengraph)
+
+[Live demo](https://teo-ng-slides.vercel.app/)
+
 A way to make multi-lingual presentations locally, using Angular.
 
 ## Motivation
