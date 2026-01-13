@@ -1,6 +1,10 @@
-# ng-slides
+# ng-slides (WIP)
 
-A way to make multi-lingual presentations locally, using Angular.
+![A screenshot of the live version of ng-slides](https://v1.screenshot.11ty.dev/https%3A%2F%2Fteo-ng-slides.vercel.app/opengraph)
+
+[Live demo](https://teo-ng-slides.vercel.app/)
+
+A way to make multi-lingual presentations locally, using Angular reusable components.
 
 ## Motivation
 
@@ -19,6 +23,7 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [x] Add reusable components support (reuse groups of slides)
 - [x] Add dark mode
 - [x] Add slide number
+- [x] Add routing (switch between slide decks)
 
 ## To do:
 
@@ -26,7 +31,7 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [ ] Language switcher and i18n setup
 - [ ] Jump to page option
 - [ ] Save settings to cookies
-- [ ] Add routing (switch between slide decks)
+- [ ] Implement responsive header
 
 ## How to run
 
