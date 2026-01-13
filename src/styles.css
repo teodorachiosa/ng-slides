@@ -101,7 +101,8 @@ a {
   text-align: center;
 }
 
-.sr-only:not(:focus):not(:active) {
+.sr-only:not(:focus):not(:active),
+.cdk-visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(100%);
   height: 1px;

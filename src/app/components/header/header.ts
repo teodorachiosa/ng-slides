@@ -3,7 +3,6 @@ import {
   Component,
   DOCUMENT,
   HostListener,
-  Inject,
   inject,
   OnInit,
 } from '@angular/core';
@@ -21,6 +20,7 @@ import { StateService } from '@services/state.service';
 export class Header implements OnInit, AfterViewInit {
   state: State = {};
   stateService = inject(StateService);
+  document = inject(DOCUMENT);
 
   view?: View;
   maxWidth?: number;
@@ -35,8 +35,6 @@ export class Header implements OnInit, AfterViewInit {
       this.present();
     }
   }
-
-  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 
   ngOnInit(): void {
     this.view = this.stateService.getState().view;

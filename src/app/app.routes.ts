@@ -1,5 +1,9 @@
 import { Routes } from '@angular/router';
 
+const titleResolver = (title: string) => {
+  return `${title} | Ng-slides`;
+};
+
 export const routes: Routes = [
   {
     path: '',
@@ -9,12 +13,12 @@ export const routes: Routes = [
   {
     path: 'slide-deck1',
     loadComponent: () => import('./slide-decks/slide-deck/slide-deck').then((m) => m.SlideDeck),
-    title: 'Slide deck #1',
+    title: titleResolver('Slide deck #1'),
   },
   {
     path: 'slide-deck2',
     loadComponent: () => import('./slide-decks/slide-deck2/slide-deck2').then((m) => m.SlideDeck2),
-    title: 'Slide deck #2',
+    title: titleResolver('Slide deck #2'),
   },
   {
     path: '**',

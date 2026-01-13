@@ -5,7 +5,6 @@ import {
   inject,
   AfterViewInit,
   ElementRef,
-  Inject,
   DOCUMENT,
   Renderer2,
 } from '@angular/core';
@@ -26,8 +25,7 @@ export class Slides implements AfterViewInit {
   allSlides?: NodeListOf<HTMLElement>;
   elementRef = inject(ElementRef);
   renderer = inject(Renderer2);
-
-  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
+  document = inject(DOCUMENT);
 
   ngAfterViewInit(): void {
     if (typeof this.document !== 'undefined') {

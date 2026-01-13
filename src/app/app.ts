@@ -1,6 +1,18 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, DOCUMENT, inject, OnDestroy, OnInit } from '@angular/core';
 import { Header } from './components/header/header';
-import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
+import {
+  RouterLink,
+  RouterOutlet,
+  RouterLinkActive,
+  Router,
+  NavigationEnd,
+  ActivatedRoute,
+  TitleStrategy,
+} from '@angular/router';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Subscription } from 'rxjs';
+
+// const CLEAN_UP_ANNOUNCEMENT_TIMEOUT = 3000;
 
 @Component({
   selector: 'app-root',
@@ -8,4 +20,50 @@ import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {}
+export class App implements AfterViewInit, OnDestroy {
+  router = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
+  announcer = inject(LiveAnnouncer);
+  document = inject(DOCUMENT);
+  titleStrategy = inject(TitleStrategy);
+  routerEventsSubscription: Subscription = Subscription.EMPTY;
+
+  ngAfterViewInit(): void {
+    this.routerEventsSubscription = this.router.events.subscribe((navigationEvent) => {
+      if (navigationEvent instanceof NavigationEnd) {
+        if (navigationEvent.id !== 1) {
+          // this.announcePageChange();
+          this.focusSlides();
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.routerEventsSubscription.unsubscribe();
+  }
+
+  // getCurrentPageTitle(): string | undefined {
+  //   // "firstChild" is needed because the current component (app component) is outside router-outlet
+  //   return this.activatedRoute.firstChild?.snapshot.title?.split('|')[0];
+  // }
+
+  // announcePageChange(): void {
+  //   const pageTitle = this.getCurrentPageTitle();
+  //   if (!pageTitle) return;
+
+  //   this.announcer.announce(`Navigated to page: ${pageTitle}`);
+  //   this.cleanUpAnnouncementsWithDelay();
+  // }
+
+  // cleanUpAnnouncementsWithDelay(): void {
+  //   setTimeout(() => {
+  //     this.announcer.clear();
+  //   }, CLEAN_UP_ANNOUNCEMENT_TIMEOUT);
+  // }
+
+  focusSlides(): void {
+    const slidesElement = this.document.getElementById('slides');
+    slidesElement?.focus();
+  }
+}
