@@ -23,7 +23,7 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [x] Add reusable components support (reuse groups of slides)
 - [x] Add dark mode
 - [x] Add slide number
-- [x] Add routing (switch between slide decks)
+- [x] Add routing (switch between slide sets)
 
 ## To do:
 
@@ -38,5 +38,5 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - fork/clone/download this project to use as a template
 - run `npm install` in the "ng-slides" folder
 - run `npm run start` for local development
-- edit the example slide deck
+- edit the example slide set
 - (optional) create a GitHub Pages workflow to host the slides online

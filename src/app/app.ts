@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  DOCUMENT,
-  inject,
-  OnDestroy,
-} from '@angular/core';
+import { AfterViewInit, Component, DOCUMENT, inject, OnDestroy } from '@angular/core';
 import { Header } from './components/header/header';
 import {
   RouterLink,
@@ -43,7 +37,6 @@ export class App implements AfterViewInit, OnDestroy {
     this.translate.setTranslation('en', TRANSLATIONS_EN);
     this.translate.setTranslation('ro', TRANSLATIONS_RO);
     this.translate.setFallbackLang('en');
-    this.translate.use('en');
   }
 
   ngAfterViewInit(): void {

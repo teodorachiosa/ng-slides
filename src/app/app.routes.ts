@@ -7,21 +7,21 @@ const titleResolver = (title: string) => {
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'slide-deck1',
+    redirectTo: 'slide-set1',
     pathMatch: 'full'
   },
   {
-    path: 'slide-deck1',
-    loadComponent: () => import('./slide-decks/slide-deck/slide-deck').then((m) => m.SlideDeck),
-    title: titleResolver('Slide deck #1'),
+    path: 'slide-set1',
+    loadComponent: () => import('./slide-sets/slide-set/slide-set').then((m) => m.SlideSet),
+    title: titleResolver('Slide set #1'),
   },
   {
-    path: 'slide-deck2',
-    loadComponent: () => import('./slide-decks/slide-deck2/slide-deck2').then((m) => m.SlideDeck2),
-    title: titleResolver('Slide deck #2'),
+    path: 'slide-set2',
+    loadComponent: () => import('./slide-sets/slide-set2/slide-set2').then((m) => m.SlideSet2),
+    title: titleResolver('Slide set #2'),
   },
   {
     path: '**',
-    redirectTo: 'slide-deck1'
+    redirectTo: 'slide-set1'
   },
 ];

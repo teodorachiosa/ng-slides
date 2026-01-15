@@ -13,7 +13,7 @@ export class MarkdownCompiler extends TranslateCompiler {
       return value;
     }
 
-    return marked.parse(value) as string
+    return value.startsWith('\\') ? value.split('\\')[1] : marked.parse(value) as string
   }
 
   compileTranslations(translations: any, lang: string): any {

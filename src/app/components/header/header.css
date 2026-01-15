@@ -73,7 +73,7 @@
             background: var(--surface-background-transparent);
 
             &::after {
-              content: '✔' / '';
+              content: '✓' / '';
               display: flex;
               align-items: center;
               margin-left: calc(var(--spacing) / 5);

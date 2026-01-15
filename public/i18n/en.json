@@ -1,3 +1,18 @@
 {
-  "app.titleSlide": "# Title\nContent"
+  "ui": {
+    "contentView": "\\Content view",
+    "webView": "\\Web view",
+    "slideView": "\\Slide view",
+    "maxWidth": "\\Max width",
+    "darkMode": "\\Dark mode",
+    "language": "\\Language",
+    "present": "\\Present"
+  },
+  "slideSet1": {
+    "titleSlide": "# My awesome presentation",
+    "about": ""
+  },
+  "slideSet2": {
+    "titleSlide": "# Another awesome presentation"
+  }
 }

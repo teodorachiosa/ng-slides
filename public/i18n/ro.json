@@ -1,3 +1,18 @@
 {
-  "app.titleSlide": "# Titlu\nConținut"
+  "ui": {
+    "contentView": "\\Mod conținut",
+    "webView": "\\Mod web",
+    "slideView": "\\Mod slide-uri",
+    "maxWidth": "\\Lățime maximă",
+    "darkMode": "\\Mod întunecat",
+    "language": "\\Limbă",
+    "present": "\\Prezintă"
+  },
+  "slideSet1": {
+    "titleSlide": "# Prezentarea mea grozavă",
+    "about": ""
+  },
+  "slideSet2": {
+    "titleSlide": "# Altă prezentare minunată"
+  }
 }

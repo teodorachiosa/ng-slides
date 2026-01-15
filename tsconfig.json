@@ -20,7 +20,7 @@
       "@services/*": ["app/services/*"],
       "@models/*": ["app/models/*"],
       "@shared/*": ["app/shared/*"],
-      "@slide-decks/*": ["app/slide-decks/*"],
+      "@slide-sets/*": ["app/slide-sets/*"],
       "@slide-groups/*": ["app/slide-groups/*"]
     }
   },

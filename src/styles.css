@@ -62,7 +62,7 @@ button {
   padding: calc(var(--spacing) / 4) calc(var(--spacing) / 3);
 
   &:not([disabled]):hover {
-    scale: 1.05;
+    scale: 1.025;
   }
 
   &:not([disabled]):active {
@@ -75,6 +75,19 @@ input,
 select {
   font: inherit;
   background: var(--background);
+}
+
+select,
+select::picker(select) {
+  appearance: base-select;
+}
+
+select {
+  border-radius: 0;
+
+  option {
+    min-height: 30px;
+  }
 }
 
 fieldset {

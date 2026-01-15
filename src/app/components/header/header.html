@@ -1,6 +1,6 @@
 <div class="left-container">
   <fieldset class="option">
-    <legend class="sr-only">View</legend>
+    <legend class="sr-only">{{'ui.contentView' | translate}}</legend>
     <div class="radio-group">
       <div class="radio">
         <input type="radio"
@@ -9,7 +9,7 @@
                name="view"
                [(ngModel)]="view"
                (ngModelChange)="updateView()" />
-        <label for="web-view">Web view</label>
+        <label for="web-view">{{'ui.webView' | translate}}</label>
       </div>
 
       <div class="radio">
@@ -19,13 +19,13 @@
                name="view"
                [(ngModel)]="view"
                (ngModelChange)="updateView()" />
-        <label for="slide-view">Slide view</label>
+        <label for="slide-view">{{'ui.slideView' | translate}}</label>
       </div>
     </div>
   </fieldset>
 
   <div class="option margin-left margin-right">
-    <label for="max-width">{{maxWidthOrZoom}}</label>
+    <label for="max-width">{{'ui.maxWidth' | translate}}</label>
     <input [(ngModel)]="maxWidth"
            (ngModelChange)="updateMaxWidth()"
            id="max-width"
@@ -36,7 +36,7 @@
   </div>
 
   <div class="option">
-    <label for="dark-mode">Dark mode</label>
+    <label for="dark-mode">{{'ui.darkMode' | translate}}</label>
     <input [(ngModel)]="isDarkMode"
            (ngModelChange)="updateDarkMode($event)"
            id="dark-mode"
@@ -46,19 +46,21 @@
 
 <div class="right-container">
   <div class="option">
-    <label for="language">Language</label>
+    <label for="language">{{'ui.language' | translate}}</label>
     <select name="language"
             id="language"
             [ngModel]="language"
             (ngModelChange)="switchLanguage($event)">
-      <option value="en" lang="en">English</option>
-      <option value="ro" lang="ro">Română</option>
+      <option value="en"
+              lang="en">English</option>
+      <option value="ro"
+              lang="ro">Română</option>
     </select>
   </div>
   <button (click)="present()"
           id="present"
           [disabled]="view === 'web'">
     <span aria-hidden="true">🖥️</span>
-    Present (<kbd>Ctrl</kbd> + <kbd>F5</kbd>)
+    {{'ui.present' | translate}} (<kbd>Ctrl</kbd> + <kbd>F5</kbd>)
   </button>
 </div>

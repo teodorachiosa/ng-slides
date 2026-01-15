@@ -2,12 +2,12 @@ import { AfterViewInit, Component, DOCUMENT, HostListener, inject, OnInit } from
 import { FormsModule } from '@angular/forms';
 
 import { State, View } from '@models/state.model';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { StateService } from '@services/state.service';
 
 @Component({
   selector: 'app-header, [header]',
-  imports: [FormsModule],
+  imports: [FormsModule, TranslatePipe],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -15,7 +15,7 @@ export class Header implements OnInit, AfterViewInit {
   state: State = {};
   stateService = inject(StateService);
   document = inject(DOCUMENT);
-  translate = inject(TranslateService);
+  translateService = inject(TranslateService);
 
   view?: View;
   maxWidth?: number;
@@ -110,13 +110,9 @@ export class Header implements OnInit, AfterViewInit {
     }
   }
 
-  get maxWidthOrZoom(): string {
-    return this.stateService.getState().view === 'web' ? 'Max width' : 'Zoom';
-  }
-
   switchLanguage(language: 'ro' | 'en'): void {
-    console.log(language);
-    this.translate.use(language);
+    this.translateService.use(language);
+
     this.document.documentElement.setAttribute('lang', language);
   }
 }
