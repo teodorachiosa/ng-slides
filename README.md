@@ -24,11 +24,11 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [x] Add dark mode
 - [x] Add slide number
 - [x] Add routing (switch between slide sets)
+- [x] Language switcher and i18n setup
 
 ## To do:
 
 - [ ] Save presentation as PDF
-- [ ] Language switcher and i18n setup
 - [ ] Jump to page option
 - [ ] Save settings to cookies
 - [ ] Implement responsive header

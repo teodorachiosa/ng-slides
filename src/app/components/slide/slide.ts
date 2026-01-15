@@ -12,7 +12,7 @@ export class Slide {
   stateService = inject(StateService);
 
   @HostBinding('attr.role')
-  slideRole = 'listitem';
+  slideRole = 'article';
 
   @HostBinding('attr.tabindex') get tabindex() {
     return this.stateService.getState().view === 'web' || !this.stateService.getState().isFullscreen

@@ -10,7 +10,7 @@
   },
   "slideSet1": {
     "titleSlide": "# My awesome presentation",
-    "about": ""
+    "about": "## Some awesome content goes here\n[Cat - Wikipedia](https://en.wikipedia.org/wiki/Cat)"
   },
   "slideSet2": {
     "titleSlide": "# Another awesome presentation"
