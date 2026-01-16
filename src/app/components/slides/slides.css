@@ -15,7 +15,6 @@
     margin: 0 auto;
     gap: var(--slides-spacing);
     padding: var(--slides-spacing);
-    outline-offset: -3px;
 
     & > ::ng-deep :not(app-slide) {
       display: contents;

@@ -24,7 +24,7 @@
     }
   }
 
-  main {
+  .main-container {
     display: flex;
 
     nav {
@@ -64,7 +64,7 @@
 
 :host-context(.fullscreen) {
   :host {
-    main {
+    .main-container {
       nav {
         display: none;
       }

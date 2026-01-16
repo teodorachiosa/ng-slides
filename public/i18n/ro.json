@@ -1,5 +1,8 @@
 {
   "ui": {
+    "skipToPresent": "\\Sari la \"Prezintă\"",
+    "skipToNavigation": "\\Sari la navigare",
+    "skipToSlides": "\\Sari la conținutul principal",
     "contentView": "\\Mod conținut",
     "webView": "\\Mod web",
     "slideView": "\\Mod slide-uri",

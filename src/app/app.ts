@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, DOCUMENT, inject, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, DOCUMENT, inject, OnDestroy, Renderer2 } from '@angular/core';
 import { Header } from './components/header/header';
 import {
   RouterLink,
@@ -9,7 +9,7 @@ import {
   ActivatedRoute,
   TitleStrategy,
 } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Subscription } from 'rxjs';
 
@@ -20,7 +20,7 @@ import TRANSLATIONS_RO from '../../public/i18n/ro.json';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, RouterLink, RouterOutlet, RouterLinkActive, RouterLinkActive],
+  imports: [Header, RouterLink, RouterOutlet, RouterLinkActive, RouterLinkActive, TranslatePipe],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -30,28 +30,57 @@ export class App implements AfterViewInit, OnDestroy {
   announcer = inject(LiveAnnouncer);
   document = inject(DOCUMENT);
   titleStrategy = inject(TitleStrategy);
-  translate = inject(TranslateService);
+  translateService = inject(TranslateService);
   routerEventsSubscription: Subscription = Subscription.EMPTY;
+  mainHeading?: HTMLHeadingElement;
+  previousUrlNoFragment?: string;
 
   constructor() {
-    this.translate.setTranslation('en', TRANSLATIONS_EN);
-    this.translate.setTranslation('ro', TRANSLATIONS_RO);
-    this.translate.setFallbackLang('en');
+    this.translateService.setTranslation('en', TRANSLATIONS_EN);
+    this.translateService.setTranslation('ro', TRANSLATIONS_RO);
+    this.translateService.setFallbackLang('en');
   }
 
   ngAfterViewInit(): void {
     this.routerEventsSubscription = this.router.events.subscribe((navigationEvent) => {
+      this.findMainHeading();
+
       if (navigationEvent instanceof NavigationEnd) {
-        if (navigationEvent.id !== 1) {
-          // this.announcePageChange();
+        const currentUrlNoFragment = navigationEvent.urlAfterRedirects.split('#')[0];
+
+        if (navigationEvent.id !== 1 && this.previousUrlNoFragment && this.previousUrlNoFragment !== currentUrlNoFragment) {
           this.focusSlides();
         }
+
+        this.previousUrlNoFragment = currentUrlNoFragment;
       }
     });
   }
 
   ngOnDestroy(): void {
     this.routerEventsSubscription.unsubscribe();
+  }
+
+  findMainHeading(): void {
+    this.mainHeading = undefined;
+    setTimeout(() => {
+      this.mainHeading = this.document.getElementsByTagName('h1')[0];
+      this.mainHeading?.setAttribute('tabindex', '-1');
+      this.mainHeading?.setAttribute('id', 'slides-start');
+    });
+  }
+
+  focusSlides(): void {
+    setTimeout(() => {
+      console.log('============= FOCUS HEADING');
+
+      this.mainHeading?.focus();
+    });
+
+    // const slidesElement = this.document.getElementById('slides');
+    // if (!this.mainHeading) {
+    //   slidesElement?.focus();
+    // }
   }
 
   // getCurrentPageTitle(): string | undefined {
@@ -72,9 +101,4 @@ export class App implements AfterViewInit, OnDestroy {
   //     this.announcer.clear();
   //   }, CLEAN_UP_ANNOUNCEMENT_TIMEOUT);
   // }
-
-  focusSlides(): void {
-    const slidesElement = this.document.getElementById('slides');
-    slidesElement?.focus();
-  }
 }

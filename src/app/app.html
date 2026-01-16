@@ -1,13 +1,13 @@
 <div class="skip-links">
   <a [routerLink]="['/']"
-     fragment="present">Skip to "Present"</a>
+     fragment="present">{{'ui.skipToPresent' | translate}}</a>
   <a [routerLink]="['/']"
-     fragment="nav">Skip to navigation</a>
+     fragment="nav">{{'ui.skipToNavigation' | translate}}</a>
   <a [routerLink]="['/']"
-     fragment="slides">Skip to slides</a>
+     fragment="slides-start">{{'ui.skipToSlides' | translate}}</a>
 </div>
 <header header></header>
-<main>
+<div class="main-container">
   <nav id="nav"
        tabindex="-1">
     <a [routerLink]="['/slide-set1']"
@@ -17,5 +17,7 @@
        routerLinkActive="active"
        ariaCurrentWhenActive="page">Slide set #2</a>
   </nav>
-  <router-outlet></router-outlet>
-</main>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

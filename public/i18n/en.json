@@ -1,5 +1,8 @@
 {
   "ui": {
+    "skipToPresent": "\\Skip to \"Present\"",
+    "skipToNavigation": "\\Skip to navigation",
+    "skipToSlides": "\\Skip to main content",
     "contentView": "\\Content view",
     "webView": "\\Web view",
     "slideView": "\\Slide view",
