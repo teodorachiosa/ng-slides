@@ -7,14 +7,16 @@ import {
   Router,
   NavigationEnd,
   ActivatedRoute,
-  TitleStrategy,
+  Routes,
 } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Subscription } from 'rxjs';
 
 import TRANSLATIONS_EN from '../../public/i18n/en.json';
 import TRANSLATIONS_RO from '../../public/i18n/ro.json';
+import { routes } from './app.routes';
 
 // const CLEAN_UP_ANNOUNCEMENT_TIMEOUT = 3000;
 
@@ -29,16 +31,20 @@ export class App implements AfterViewInit, OnDestroy {
   activatedRoute = inject(ActivatedRoute);
   announcer = inject(LiveAnnouncer);
   document = inject(DOCUMENT);
-  titleStrategy = inject(TitleStrategy);
   translateService = inject(TranslateService);
   routerEventsSubscription: Subscription = Subscription.EMPTY;
   mainHeading?: HTMLHeadingElement;
   previousUrlNoFragment?: string;
+  titleService = inject(Title);
+  pageTitle = '';
+  routes: Routes;
 
   constructor() {
     this.translateService.setTranslation('en', TRANSLATIONS_EN);
     this.translateService.setTranslation('ro', TRANSLATIONS_RO);
     this.translateService.setFallbackLang('en');
+
+    this.routes = routes;
   }
 
   ngAfterViewInit(): void {
@@ -48,13 +54,31 @@ export class App implements AfterViewInit, OnDestroy {
       if (navigationEvent instanceof NavigationEnd) {
         const currentUrlNoFragment = navigationEvent.urlAfterRedirects.split('#')[0];
 
-        if (navigationEvent.id !== 1 && this.previousUrlNoFragment && this.previousUrlNoFragment !== currentUrlNoFragment) {
+        if (
+          navigationEvent.id !== 1 &&
+          this.previousUrlNoFragment &&
+          this.previousUrlNoFragment !== currentUrlNoFragment
+        ) {
           this.focusSlides();
         }
+
+        this.setPageTitle();
+        this.translateService.onLangChange.subscribe(() => {
+          this.setPageTitle();
+        });
 
         this.previousUrlNoFragment = currentUrlNoFragment;
       }
     });
+  }
+
+  getPageTitle(): string {
+    return `${this.translateService.instant(this.activatedRoute.firstChild?.snapshot.data['title'] ?? '.')} - ${this.translateService.instant('ui.siteTitle')}`;
+  }
+
+  setPageTitle(): void {
+    this.pageTitle = this.getPageTitle();
+    this.titleService.setTitle(this.pageTitle);
   }
 
   ngOnDestroy(): void {
@@ -72,8 +96,6 @@ export class App implements AfterViewInit, OnDestroy {
 
   focusSlides(): void {
     setTimeout(() => {
-      console.log('============= FOCUS HEADING');
-
       this.mainHeading?.focus();
     });
 

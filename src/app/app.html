@@ -10,12 +10,14 @@
 <div class="main-container">
   <nav id="nav"
        tabindex="-1">
-    <a [routerLink]="['/slide-set1']"
+    @for(route of routes; track route.path) {
+    @if(route.path !== '' && route.path !== '**') {
+    <a [routerLink]="route.path"
        routerLinkActive="active"
-       ariaCurrentWhenActive="page">Slide set #1</a>
-    <a [routerLink]="['/slide-set2']"
-       routerLinkActive="active"
-       ariaCurrentWhenActive="page">Slide set #2</a>
+       ariaCurrentWhenActive="page">{{route.data?.['title'] | translate}}
+    </a>
+    }
+    }
   </nav>
   <main>
     <router-outlet></router-outlet>

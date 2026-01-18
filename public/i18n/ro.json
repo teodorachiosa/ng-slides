@@ -1,5 +1,6 @@
 {
   "ui": {
+    "siteTitle": "\\Slide-uri Teodora Chiosa",
     "skipToPresent": "\\Sari la \"Prezintă\"",
     "skipToNavigation": "\\Sari la navigare",
     "skipToSlides": "\\Sari la conținutul principal",
@@ -11,11 +12,19 @@
     "language": "\\Limbă",
     "present": "\\Prezintă"
   },
-  "slideSet1": {
-    "titleSlide": "# Prezentarea mea grozavă",
-    "about": "## Niște conținut grozav aici...\n[Pisică de casă - Wikipedia](https://ro.wikipedia.org/wiki/Cat)"
-  },
-  "slideSet2": {
-    "titleSlide": "# Altă prezentare minunată"
+  "sets": {
+    "set1": {
+      "title": "\\Prezentarea mea grozavă",
+      "content": {
+        "heading1": "# Prezentarea mea grozavă",
+        "heading2": "## Niște conținut grozav aici...\n[Pisică de casă - Wikipedia](https://ro.wikipedia.org/wiki/Cat)"
+      }
+    },
+    "set2": {
+      "title": "\\Altă prezentare minunată",
+      "content": {
+        "heading1": "# Altă prezentare minunată"
+      }
+    }
   }
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { Slide } from '@components/slide/slide';
@@ -14,6 +13,4 @@ import { Markdown } from '@components/markdown/markdown';
   templateUrl: './slide-set.html',
   styleUrl: './slide-set.css',
 })
-export class SlideSet  {
-
-}
+export class SlideSet {}

@@ -59,7 +59,7 @@ button {
   font-weight: 600;
   background: var(--background);
   border: 2px solid var(--shadow-color);
-  padding: calc(var(--spacing) / 4) calc(var(--spacing) / 3);
+  padding: calc(var(--spacing) / 6);
 
   &:not([disabled]):hover {
     scale: 1.025;

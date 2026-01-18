@@ -11,7 +11,6 @@
   background: var(--surface-background-transparent);
   backdrop-filter: blur(10px);
   padding: calc(var(--spacing) / 3);
-  height: var(--header-height);
 
   .left-container,
   .right-container {
