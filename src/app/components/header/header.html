@@ -4,22 +4,21 @@
     <div class="radio-group">
       <div class="radio">
         <input type="radio"
-               id="web-view"
-               value="web"
-               name="view"
-               [(ngModel)]="view"
-               (ngModelChange)="updateView()" />
-        <label for="web-view">{{'ui.webView' | translate}}</label>
-      </div>
-
-      <div class="radio">
-        <input type="radio"
                id="slide-view"
                value="slide"
                name="view"
                [(ngModel)]="view"
                (ngModelChange)="updateView()" />
         <label for="slide-view">{{'ui.slideView' | translate}}</label>
+      </div>
+      <div class="radio">
+        <input type="radio"
+               id="web-view"
+               value="web"
+               name="view"
+               [(ngModel)]="view"
+               (ngModelChange)="updateView()" />
+        <label for="web-view">{{'ui.webView' | translate}}</label>
       </div>
     </div>
   </fieldset>

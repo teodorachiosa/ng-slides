@@ -30,22 +30,37 @@
       }
     }
 
-    input {
+    #max-width {
       max-width: 50px;
+      height: 30px;
+
+      ::-webkit-slider-runnable-track {
+        border-radius: 0;
+      }
     }
 
     .radio-group {
       display: flex;
-      background: var(--background);
       border: 2px solid var(--shadow-color);
       justify-content: center;
       align-items: center;
+      border-radius: var(--radius);
 
       .radio {
         display: flex;
 
         &:first-child {
-          border-right: 2px solid var(--shadow-color);
+          border-radius: calc(var(--radius) - 2px);
+
+          border-top-right-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+        }
+
+        &:last-child {
+          border-radius: calc(var(--radius) - 2px);
+
+          border-top-left-radius: 0 !important;
+          border-bottom-left-radius: 0 !important;
         }
 
         input {
@@ -69,7 +84,8 @@
         input:checked {
           & + label {
             font-weight: 600;
-            background: var(--surface-background-transparent);
+            /* background: var(--surface-background-transparent); */
+            background: var(--background);
 
             &::after {
               content: '✓' / '';
