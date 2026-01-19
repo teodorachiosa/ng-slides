@@ -1,4 +1,4 @@
-# ng-slides (WIP)
+# ng-slides (🚨 work in progress)
 
 ![A screenshot of the live version of ng-slides](https://v1.screenshot.11ty.dev/https%3A%2F%2Fteo-ng-slides.vercel.app/opengraph)
 
@@ -28,11 +28,12 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 
 ## To do:
 
+- [ ] Implement responsive UI
 - [ ] Save presentation as PDF
-- [ ] Jump to page option
+- [ ] Add total number of pages and a "jump to page" feature
 - [ ] Save settings to cookies
-- [ ] Implement responsive header
 - [ ] Handle 404 (page not found)
+- [ ] Perform accessibility checks (WCAG 2.2 minimum) and add an accessibility statement
 
 ## How to run
 
