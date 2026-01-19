@@ -45,6 +45,8 @@
 
 :host-context(.web-view) {
   :host {
+    border-radius: var(--radius);
+
     ::ng-deep .slide-number {
       display: none;
     }
