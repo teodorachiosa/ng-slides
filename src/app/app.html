@@ -6,13 +6,17 @@
   <a [routerLink]="['/']"
      fragment="slides-start">{{'ui.skipToSlides' | translate}}</a>
 </div>
+
 <header header></header>
+
 <div class="main-container">
   <nav id="nav"
-       tabindex="-1">
+       tabindex="-1"
+       [class.hidden]="!isMenuOpen">
     @for(route of routes; track route.path) {
     @if(route.path !== '' && route.path !== '**') {
     <a [routerLink]="route.path"
+       [fragment]="'slides-start'"
        routerLinkActive="active"
        ariaCurrentWhenActive="page">{{route.data?.['title'] | translate}}
     </a>

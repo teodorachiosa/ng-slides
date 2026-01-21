@@ -1,4 +1,6 @@
 :host {
+  --menu-width: 200px;
+
   position: relative;
   display: flex;
   flex-direction: column;
@@ -29,10 +31,29 @@
     display: flex;
 
     nav {
-      padding: calc(var(--spacing) / 3) 0;
+      position: sticky;
+      left: 0;
+      top: var(--header-min-height);
       display: flex;
       flex-direction: column;
       width: 200px;
+      height: calc(100vh - var(--header-min-height));
+      padding: calc(var(--spacing) / 3) 0;
+      border-right: 1px solid color-mix(in hsl, var(--foreground), transparent 80%);
+      overflow: auto;
+
+      &.hidden {
+        opacity: 0;
+        translate: -100%;
+        width: 0;
+
+        &:focus-visible,
+        &:focus-within {
+          opacity: unset;
+          translate: unset;
+          width: var(--menu-width);
+        }
+      }
 
       a {
         padding: calc(var(--spacing) / 3) calc(var(--spacing) / 2);

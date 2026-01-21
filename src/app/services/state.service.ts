@@ -13,6 +13,7 @@ export class StateService {
     isDarkMode: true,
     isFullscreen: false,
     currentSlide: 0,
+    isMenuOpen: false,
   };
 
   constructor() {

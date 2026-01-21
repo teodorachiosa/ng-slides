@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, DOCUMENT, HostListener, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 import { State, View } from '@models/state.model';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { StateService } from '@services/state.service';
+import { ContentLanguage } from '@models/content-language.model';
 
 const WIDTH_STEP = 10;
 const WIDTH_MIN = 10;
@@ -16,16 +18,16 @@ const WIDTH_MAX = 100;
   styleUrl: './header.css',
 })
 export class Header implements OnInit, AfterViewInit {
-  state: State = {};
   stateService = inject(StateService);
   document = inject(DOCUMENT);
   translateService = inject(TranslateService);
-
+  router = inject(Router);
+  state: State = {};
   view?: View;
   maxWidth?: number;
   isDarkMode?: boolean;
-  language: 'ro' | 'en' = 'en';
-
+  language: ContentLanguage = 'en';
+  isMenuOpen?: boolean;
   rootElement?: HTMLElement | null;
 
   @HostListener('document:keydown', ['$event'])
@@ -40,6 +42,7 @@ export class Header implements OnInit, AfterViewInit {
     this.view = this.stateService.getState().view;
     this.maxWidth = this.stateService.getState().maxWidth;
     this.isDarkMode = this.stateService.getState().isDarkMode;
+    this.isMenuOpen = this.stateService.getState().isMenuOpen;
 
     if (typeof window !== 'undefined') {
       this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -88,7 +91,7 @@ export class Header implements OnInit, AfterViewInit {
     this.setColorScheme();
   }
 
-  isDecreaseButtonDisabled():boolean {
+  isDecreaseButtonDisabled(): boolean {
     return !this.maxWidth || this.maxWidth < WIDTH_MIN + WIDTH_STEP;
   }
 
@@ -134,9 +137,20 @@ export class Header implements OnInit, AfterViewInit {
     this.stateService.setState(this.state);
   }
 
-  switchLanguage(language: 'ro' | 'en'): void {
+  switchLanguage(language: ContentLanguage): void {
     this.translateService.use(language);
 
     this.document.documentElement.setAttribute('lang', language);
+  }
+
+  toggleSidebar(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+
+    this.state['isMenuOpen'] = this.isMenuOpen;
+    this.stateService.setState(this.state);
+
+    if (this.isMenuOpen) {
+      this.router.navigate([''], { fragment: 'nav' });
+    }
   }
 }

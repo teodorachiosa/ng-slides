@@ -51,12 +51,6 @@
       margin-left: calc(var(--spacing) / 8);
     }
 
-    &.settings {
-      &::before {
-        content: '⚙️' / '';
-      }
-    }
-
     #max-width {
       height: var(--min-height-controls);
 
@@ -137,7 +131,7 @@
   }
 }
 
-@media screen and (width <= 400px) {
+@media screen and (width <= 756px) {
   .kbd-shortcut {
     display: none;
   }

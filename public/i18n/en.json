@@ -1,5 +1,6 @@
 {
   "ui": {
+    "menu": "\\Menu",
     "settings": "\\Settings",
     "siteTitle": "\\Teodora Chiosa Slides",
     "skipToPresent": "\\Skip to \"Present\"",

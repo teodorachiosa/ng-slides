@@ -23,14 +23,15 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [x] Add slide number
 - [x] Add routing (switch between slide sets)
 - [x] Language switcher and i18n setup
+- [x] Make menu (slide sets links) sticky (top) 
+- [x] Implement responsive UI (Update translations, Update a11y)
+- [x] Move dark mode toggle to a side menu (along with other settings)
+- [x] Update the max-width / zoom feature to use minus/plus buttons instead and a select control for the zoom level (similar to FireFox's PDF viewer) 
 
 ## To do (MVP):
 
 - [ ] Improve color contrast for non-text content (UI controls)
 - [ ] Handle 404 (page not found)
-- [ ] Implement responsive UI (Update translations, Update a11y)
-- [ ] Update the max-width / zoom feature to use minus/plus buttons instead and a select comtrol for the zoom level (similar to FireFox's PDF viewer) 
-- [ ] Move dark mode toggle to a side menu (along with other settings)
 - [ ] Add total number of pages and a "jump to page" feature
 - [ ] Save settings to cookies
 - [ ] Perform accessibility checks (WCAG 2.2 minimum) and add an accessibility statement

@@ -1,5 +1,12 @@
-import { AfterViewInit, Component, DOCUMENT, inject, OnDestroy } from '@angular/core';
-import { Header } from './components/header/header';
+import {
+  AfterViewInit,
+  Component,
+  DOCUMENT,
+  effect,
+  inject,
+  OnDestroy,
+} from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 import {
   RouterLink,
   RouterOutlet,
@@ -8,17 +15,20 @@ import {
   NavigationEnd,
   ActivatedRoute,
   Routes,
+  Scroll,
 } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
+import { StateService } from '@services/state.service';
+import { Header } from '@components/header/header';
+import { routes } from './app.routes';
 import TRANSLATIONS_EN from '../../public/i18n/en.json';
 import TRANSLATIONS_RO from '../../public/i18n/ro.json';
-import { routes } from './app.routes';
 
-const SCROLL_BY_OFFSET = 80;
+const ANCHOR_SCROLL_OFFSET = 200;
 
 @Component({
   selector: 'app-root',
@@ -32,12 +42,15 @@ export class App implements AfterViewInit, OnDestroy {
   announcer = inject(LiveAnnouncer);
   document = inject(DOCUMENT);
   translateService = inject(TranslateService);
+  stateService = inject(StateService);
+  viewportScroller = inject(ViewportScroller);
+  titleService = inject(Title);
   routerEventsSubscription: Subscription = Subscription.EMPTY;
   mainHeading?: HTMLHeadingElement;
   previousUrlNoFragment?: string;
-  titleService = inject(Title);
   pageTitle = '';
   routes: Routes;
+  isMenuOpen?: boolean;
 
   constructor() {
     this.translateService.setTranslation('en', TRANSLATIONS_EN);
@@ -45,6 +58,10 @@ export class App implements AfterViewInit, OnDestroy {
     this.translateService.setFallbackLang('en');
 
     this.routes = routes;
+
+    effect(() => {
+      this.isMenuOpen = this.stateService.getState().isMenuOpen;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -52,51 +69,25 @@ export class App implements AfterViewInit, OnDestroy {
       this.findMainHeading();
 
       if (navigationEvent instanceof NavigationEnd) {
-        const currentUrlNoFragment = navigationEvent.urlAfterRedirects.split('#')[0];
-
-        if (
-          navigationEvent.id !== 1 &&
-          this.previousUrlNoFragment &&
-          this.previousUrlNoFragment !== currentUrlNoFragment
-        ) {
-          this.focusSlides();
-        }
-
         this.setPageTitle();
         this.translateService.onLangChange.subscribe(() => {
           this.setPageTitle();
         });
+      }
 
-        /*
-        Angular bug: https://github.com/angular/angular/issues/55383
-        Quick ugly fix: Always scroll to top
-        TODO:  Implement better manual scrolling to element and keep up to date with this bug
-        */
-        if (navigationEvent.urlAfterRedirects.includes('#')) {
-          const elementToFocus = this.document.getElementById(
-            navigationEvent.urlAfterRedirects.split('#')[1],
-          );
-          if (elementToFocus) {
-            this.scrollToElement(elementToFocus);
-          }
+      // Angular bug: https://github.com/angular/angular/issues/55383
+      if (navigationEvent instanceof Scroll) {
+        const element = this.document.querySelector(`#${navigationEvent.anchor}`);
+
+        if (element) {
+          this.viewportScroller.setOffset([0, ANCHOR_SCROLL_OFFSET]);
         }
-
-        this.previousUrlNoFragment = currentUrlNoFragment;
       }
     });
   }
 
   ngOnDestroy(): void {
     this.routerEventsSubscription.unsubscribe();
-  }
-
-  private scrollToElement(element: HTMLElement): void {
-    setTimeout(() => {
-      window.scrollBy({
-        top: element.getBoundingClientRect().top - SCROLL_BY_OFFSET,
-        behavior: 'smooth',
-      });
-    });
   }
 
   getPageTitle(): string {
@@ -110,21 +101,8 @@ export class App implements AfterViewInit, OnDestroy {
 
   findMainHeading(): void {
     this.mainHeading = undefined;
-    setTimeout(() => {
-      this.mainHeading = this.document.getElementsByTagName('h1')[0];
-      this.mainHeading?.setAttribute('tabindex', '-1');
-      this.mainHeading?.setAttribute('id', 'slides-start');
-    });
-  }
-
-  focusSlides(): void {
-    setTimeout(() => {
-      this.mainHeading?.focus();
-    });
-
-    const slidesElement = this.document.getElementById('slides');
-    if (!this.mainHeading) {
-      slidesElement?.focus();
-    }
+    this.mainHeading = this.document.getElementsByTagName('h1')[0];
+    this.mainHeading?.setAttribute('tabindex', '-1');
+    this.mainHeading?.setAttribute('id', 'slides-start');
   }
 }
