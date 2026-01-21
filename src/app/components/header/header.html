@@ -76,12 +76,14 @@
             class="max-width-controls"
             aria-labelledby="max-width-label">
         <button (click)="decreaseWidth()"
-                [disabled]="isDecreaseButtonDisabled()">
+                [disabled]="isDecreaseButtonDisabled()"
+                class="plus-minus-button">
           <span class="sr-only">Decrease maximum width</span>
           <span aria-hidden="true">-</span>
         </button>
         <button (click)="increaseWidth()"
-                [disabled]="isIncreaseButtonDisabled()">
+                [disabled]="isIncreaseButtonDisabled()"
+                class="plus-minus-button">
           <span class="sr-only">Increase maximum width</span>
           <span aria-hidden="true">+</span>
         </button>
