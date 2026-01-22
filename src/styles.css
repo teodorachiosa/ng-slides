@@ -92,18 +92,15 @@ input {
   border: 2px solid var(--background);
   padding: calc(var(--spacing) / 3);
   border-radius: var(--radius);
-  margin-top: var(--radius);
+  margin-top: 8px;
   background: var(--surface-background-transparent);
   backdrop-filter: blur(10px);
+  box-shadow: 0 0 var(--shadow-spread) 0 color-mix(in srgb, var(--shadow-color), transparent 60%);
 }
 
 @supports (position-area: end) {
   [popover] {
-    position-area: end span-end;
-    position-try-fallbacks:
-      flip-block,
-      flip-inline,
-      flip-block flip-inline;
+    position-area: end center;
   }
 }
 
