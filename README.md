@@ -1,4 +1,4 @@
-# ng-slides (🚨 work in progress)
+# ngx-md-slides (🚨 work in progress)
 
 [Live demo](https://teo-ng-slides.vercel.app/)
 
