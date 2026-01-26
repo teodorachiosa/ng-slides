@@ -7,6 +7,9 @@ import { State, View } from '@models/state.model';
 import { StateService } from '@services/state.service';
 import { ContentLanguage } from '@models/content-language.model';
 import { routes } from 'app/app.routes';
+import { IconMenu } from '@shared/icons/icon-menu/icon-menu';
+import { IconSettings } from '@shared/icons/icon-settings/icon-settings';
+import { IconPresentation } from '@shared/icons/icon-presentation/icon-presentation';
 
 const WIDTH_STEP = 10;
 const WIDTH_MIN = 10;
@@ -14,7 +17,7 @@ const WIDTH_MAX = 100;
 
 @Component({
   selector: 'app-header, [header]',
-  imports: [FormsModule, TranslatePipe, RouterLink, RouterLinkActive],
+  imports: [FormsModule, TranslatePipe, RouterLink, RouterLinkActive, IconMenu, IconSettings, IconPresentation],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
