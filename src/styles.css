@@ -63,6 +63,7 @@ body {
 
 * {
   box-sizing: border-box;
+  letter-spacing: 0.5px;
 }
 
 button {
@@ -96,36 +97,26 @@ input {
   background: var(--surface-background-transparent);
   backdrop-filter: blur(10px);
   box-shadow: 0 0 var(--shadow-spread) 0 color-mix(in srgb, var(--shadow-color), transparent 60%);
+  position-area: end span-end;
+  position-try-fallbacks:
+    flip-block,
+    flip-inline,
+    flip-block flip-inline;
 }
 
-@supports (position-area: end) {
-  [popover] {
-    position-area: end center;
-  }
-}
-
-fieldset {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  min-width: 0;
-
-  legend {
-    padding: 0;
-    float: left;
-    font-weight: 600;
-  }
-}
-
-input:not([type='range']),
+input,
 button,
 .radio {
   border-radius: var(--radius);
 
   &:not([disabled]):hover {
     box-shadow:
-      inset 0 0 0 1px color-mix(in hsl, var(--foreground), transparent 80%),
-      inset 0 0 0 50px color-mix(in hsl, var(--background), transparent 30%);
+      inset 0 0 0 1px light-dark(white, color-mix(in hsl, var(--foreground), transparent 80%)),
+      inset 0 0 0 50px
+        light-dark(
+          color-mix(in hsl, var(--foreground), transparent 97%),
+          color-mix(in hsl, var(--background), transparent 30%)
+        );
   }
 }
 

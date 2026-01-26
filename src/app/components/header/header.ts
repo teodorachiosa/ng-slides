@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, DOCUMENT, HostListener, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, Routes } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 import { State, View } from '@models/state.model';
 import { StateService } from '@services/state.service';
 import { ContentLanguage } from '@models/content-language.model';
+import { routes } from 'app/app.routes';
 
 const WIDTH_STEP = 10;
 const WIDTH_MIN = 10;
@@ -13,7 +14,7 @@ const WIDTH_MAX = 100;
 
 @Component({
   selector: 'app-header, [header]',
-  imports: [FormsModule, TranslatePipe],
+  imports: [FormsModule, TranslatePipe, RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -29,6 +30,7 @@ export class Header implements OnInit, AfterViewInit {
   language: ContentLanguage = 'en';
   isMenuOpen?: boolean;
   rootElement?: HTMLElement | null;
+  routes: Routes;
 
   @HostListener('document:keydown', ['$event'])
   handlePresentKeys(event: KeyboardEvent) {
@@ -36,6 +38,10 @@ export class Header implements OnInit, AfterViewInit {
       event.preventDefault();
       this.present();
     }
+  }
+
+  constructor() {
+    this.routes = routes;
   }
 
   ngOnInit(): void {
@@ -143,14 +149,8 @@ export class Header implements OnInit, AfterViewInit {
     this.document.documentElement.setAttribute('lang', language);
   }
 
-  toggleSidebar(): void {
-    this.isMenuOpen = !this.isMenuOpen;
-
-    this.state['isMenuOpen'] = this.isMenuOpen;
-    this.stateService.setState(this.state);
-
-    if (this.isMenuOpen) {
-      this.router.navigate([''], { fragment: 'nav' });
-    }
+  closeMenuPopover(): void {
+    const menuPopover = this.document.getElementById('main-menu');
+    menuPopover?.hidePopover();
   }
 }

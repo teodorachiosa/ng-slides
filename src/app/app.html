@@ -2,7 +2,7 @@
   <a [routerLink]="['/']"
      fragment="present">{{'ui.skipToPresent' | translate}}</a>
   <a [routerLink]="['/']"
-     fragment="nav">{{'ui.skipToNavigation' | translate}}</a>
+     fragment="menu-title">{{'ui.skipToNavigation' | translate}}</a>
   <a [routerLink]="['/']"
      fragment="slides-start">{{'ui.skipToSlides' | translate}}</a>
 </div>
@@ -10,19 +10,6 @@
 <header header></header>
 
 <div class="main-container">
-  <nav id="nav"
-       tabindex="-1"
-       [class.hidden]="!isMenuOpen">
-    @for(route of routes; track route.path) {
-    @if(route.path !== '' && route.path !== '**') {
-    <a [routerLink]="route.path"
-       [fragment]="'slides-start'"
-       routerLinkActive="active"
-       ariaCurrentWhenActive="page">{{route.data?.['title'] | translate}}
-    </a>
-    }
-    }
-  </nav>
   <main>
     <router-outlet></router-outlet>
   </main>

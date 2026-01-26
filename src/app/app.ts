@@ -1,20 +1,11 @@
-import {
-  AfterViewInit,
-  Component,
-  DOCUMENT,
-  effect,
-  inject,
-  OnDestroy,
-} from '@angular/core';
+import { AfterViewInit, Component, DOCUMENT, effect, inject, OnDestroy } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import {
   RouterLink,
   RouterOutlet,
-  RouterLinkActive,
   Router,
   NavigationEnd,
   ActivatedRoute,
-  Routes,
   Scroll,
 } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -24,7 +15,6 @@ import { Subscription } from 'rxjs';
 
 import { StateService } from '@services/state.service';
 import { Header } from '@components/header/header';
-import { routes } from './app.routes';
 import TRANSLATIONS_EN from '../../public/i18n/en.json';
 import TRANSLATIONS_RO from '../../public/i18n/ro.json';
 
@@ -32,7 +22,7 @@ const ANCHOR_SCROLL_OFFSET = 200;
 
 @Component({
   selector: 'app-root',
-  imports: [Header, RouterLink, RouterOutlet, RouterLinkActive, RouterLinkActive, TranslatePipe],
+  imports: [Header, RouterLink, RouterOutlet, TranslatePipe],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -49,15 +39,12 @@ export class App implements AfterViewInit, OnDestroy {
   mainHeading?: HTMLHeadingElement;
   previousUrlNoFragment?: string;
   pageTitle = '';
-  routes: Routes;
   isMenuOpen?: boolean;
 
   constructor() {
     this.translateService.setTranslation('en', TRANSLATIONS_EN);
     this.translateService.setTranslation('ro', TRANSLATIONS_RO);
     this.translateService.setFallbackLang('en');
-
-    this.routes = routes;
 
     effect(() => {
       this.isMenuOpen = this.stateService.getState().isMenuOpen;

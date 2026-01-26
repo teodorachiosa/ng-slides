@@ -30,7 +30,6 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 
 ## To do (MVP):
 
-- [ ] Improve color contrast for non-text content (UI controls)
 - [ ] Handle 404 (page not found)
 - [ ] Add total number of pages and a "jump to page" feature
 - [ ] Save settings to cookies
