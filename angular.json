@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ng-slides": {
+    "ngx-md-slides": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ng-slides:build:production"
+              "buildTarget": "ngx-md-slides:build:production"
             },
             "development": {
-              "buildTarget": "ng-slides:build:development"
+              "buildTarget": "ngx-md-slides:build:development"
             }
           },
           "defaultConfiguration": "development"

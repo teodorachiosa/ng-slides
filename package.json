@@ -1,5 +1,5 @@
 {
-  "name": "ng-slides",
+  "name": "ngx-md-slides",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ng-slides": "node dist/ng-slides/server/server.mjs"
+    "serve:ssr:ngx-md-slides": "node dist/ngx-md-slides/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,

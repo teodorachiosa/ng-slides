@@ -41,7 +41,7 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 ## How to run
 
 - fork/clone/download this project to use as a template
-- run `npm install` in the "ng-slides" folder
+- run `npm install` in the "ngx-md-slides" folder
 - run `npm run start` for local development
 - edit the example slide set
 - (optional) create a GitHub Pages workflow to host the slides online
