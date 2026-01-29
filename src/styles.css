@@ -74,6 +74,13 @@
     letter-spacing: 0.5px;
   }
 
+  kbd,
+  code,
+  pre {
+    font-family: var(--mono-font);
+    font-size: 0.9em;
+  }
+
   button {
     display: inline-flex;
     align-items: center;

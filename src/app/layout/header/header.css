@@ -55,10 +55,15 @@
     }
   }
 
+  .disclaimer {
+    grid-column: 1 / -1;
+    padding: calc(var(--spacing) / 3);
+    border-bottom: 2px solid var(--light-grey);
+  }
+
   .option {
     .span-label {
-      font-weight: 600;
-      justify-self: flex-end;
+      font-weight: 700;
     }
 
     .plus-minus-button {
@@ -132,7 +137,7 @@
 
         input:checked {
           & + label {
-            font-weight: 600;
+            font-weight: 700;
             background: var(--background);
 
             &::after {
@@ -168,7 +173,7 @@
       border-radius: var(--radius);
 
       &[aria-current] {
-        font-weight: 600;
+        font-weight: 700;
 
         &::after {
           content: '✓' / '';
