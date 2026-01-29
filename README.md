@@ -1,12 +1,14 @@
-# ngx-md-slides (🚨 work in progress)
+# ngx-md-slides
 
 [Live demo](https://ngx-md-slides.vercel.app/)
 
-A way to make multi-lingual presentations locally, using Angular reusable components.
+A way to make multi-lingual presentations, using markdown and Angular components.
 
 ## Motivation
 
-I hate working with PowerPoint and I hate copy-pasting content between similar presentations.
+I hate working with PowerPoint and I hate copy-pasting content between similar presentations. 
+
+Using this approach, you can create groups of slides that can be reused in multiple presentations.
 
 ## Implemented:
 
@@ -37,10 +39,18 @@ I hate working with PowerPoint and I hate copy-pasting content between similar p
 - [ ] Save presentation as PDF
 - [ ] Implement non-hardcoded languages (and use a `select` element)
 
+## Folder structure
+```
+app
+|__ layout
+|__ shared
+|__ slides <-- slide set components go here
+|__ templates <-- reusable slide templates/components go here
+```
 
 ## How to run
 
-- fork/clone/download this project to use as a template
+- fork, clone or use this template in a new repo
 - run `npm install` in the "ngx-md-slides" folder
 - run `npm run start` for local development
 - edit the example slide set
