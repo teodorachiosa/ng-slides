@@ -50,7 +50,7 @@ app
 
 ## How to run
 
-- fork, clone or use this template in a new repo
+- fork or use this template in a new repo
 - run `npm install` in the "ngx-md-slides" folder
 - run `npm run start` for local development
 - edit the example slide set
