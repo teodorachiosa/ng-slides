@@ -81,6 +81,10 @@
     font-size: 0.9em;
   }
 
+  pre code {
+    white-space: pre-wrap;
+  }
+
   button {
     display: inline-flex;
     align-items: center;
