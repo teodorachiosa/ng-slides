@@ -34,5 +34,12 @@
     & > ::ng-deep *:last-child {
       flex-grow: 1;
     }
+
+    .credit {
+      text-align: center;
+      font-size: 0.9em;
+      margin: calc(1.5 * var(--spacing)) var(--spacing);
+      line-height: 1.5;
+    }
   }
 }

@@ -15,6 +15,7 @@
     margin: 0 auto;
     gap: min(5vw, calc(var(--slides-spacing) * 1.5));
     padding: min(5vw, calc(var(--slides-spacing) * 1.5));
+    padding-bottom: 0;
 
     & > ::ng-deep :not(app-slide) {
       display: contents;
