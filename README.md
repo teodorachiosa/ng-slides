@@ -57,3 +57,7 @@ app
 - run `npm run start` for local development
 - edit the example slide set
 - (optional) create a GitHub Pages workflow to host the slides online
+
+## Credits
+
+- Icons: [Lucide](https://lucide.dev/)
